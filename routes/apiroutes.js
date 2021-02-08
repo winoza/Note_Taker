@@ -1,14 +1,15 @@
 const fs = require('fs')
 const noteData = require('../db/db.json')
+const app = require("express").Router();
 
 
 module.exports = function (app) {
 
-    app.get("/api/notes", function (req, res) {
+    app.get("/notes", function (req, res) {
         res.json(noteData);
     });
 
-    app.post("/api/notes", function (req, res) {
+    app.post("/notes", function (req, res) {
 
         if (noteData.length === 0){
             req.body.id = 0
@@ -29,7 +30,7 @@ module.exports = function (app) {
         })
     }
 
-    app.delete("/api/notes/:id", function(req, res) {
+    app.delete("/notes/:id", function(req, res) {
 
         for(var i = 0; i < noteData.length; i++){
             if(noteData[i].id === parseInt(req.params.id)){
