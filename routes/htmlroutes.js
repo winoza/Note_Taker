@@ -1,6 +1,4 @@
 const path = require("path");
-require("./routes/apiRoutes")(app);
-
 
 module.exports = function(app) {
     
